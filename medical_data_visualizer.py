@@ -13,7 +13,7 @@ df['gluc'] = (df['gluc'] > 1).astype(int)
 
 def draw_cat_plot():
 
-  df_cat = pd.melt(df, id_vars=['cardio'], value_vars=['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'])
+  df_cat = pd.melt(df, id_vars=['cardio'], value_vars=[ 'active', 'alco','cholesterol', 'gluc', 'overweight', 'smoke'])
   df_cat = df_cat.groupby(['cardio', 'variable', 'value']).size().reset_index(name='total')
 
   fig = sns.catplot(data=df_cat, x='variable', y='total', hue='value', col='cardio',  kind='bar').fig
